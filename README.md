@@ -1,98 +1,81 @@
 # factor-performance-analysis
 
+A small practice project exploring basic diagnostics of equity factor behavior using historical data.
+
+---
+
 ## Overview
 
-This project studies the empirical behavior of common equity factors using historical data.  
-Rather than focusing on trading strategies or return forecasting, the analysis aims to understand:
+This repository contains a practice-oriented exploratory analysis of common equity factors.  
+The goal of the project is not to develop trading strategies or to establish persistent predictive relationships, but to gain hands-on familiarity with standard tools used to examine factor behavior.
 
-- How factor returns evolve over long horizons
-- Whether factors exhibit stable cross-sectional predictive power
-- To what extent factor behavior may be explained by industry exposure
-
-The project is structured as a descriptive and diagnostic analysis of factor performance.
+The analysis focuses on descriptive and diagnostic perspectives, including return aggregation, simple predictive diagnostics, and structural exposure inspection.
 
 ---
 
 ## Data
 
-The analysis uses monthly Fama–French factor data obtained from the official Kenneth R. French data library.
+The project uses monthly factor return data from the Kenneth R. French Data Library.
 
 - Frequency: Monthly
-- Factors analyzed: Market (Mkt-RF), SMB, HML
+- Factors considered: Market (Mkt-RF), SMB, HML
 - Sample start: 2000
 
 All returns are converted from percentages to decimal form prior to analysis.
 
 ---
 
-## Methodology
+## Analyses Performed
 
-Three complementary analyses are conducted:
+The following exploratory analyses are conducted:
 
-1. **Cumulative return analysis**  
-   Monthly factor returns are compounded to visualize long-term performance paths and compared against a market benchmark.
+1. **Cumulative return visualization**  
+   Factor returns are compounded to illustrate long-term performance paths and to provide basic context for subsequent diagnostics.
 
-2. **Information Coefficient (IC) analysis**  
-   The predictive ability of a factor is measured using the Spearman rank correlation between factor values and future market returns.
+2. **Information Coefficient (IC) exploration**  
+   Simple Spearman rank correlations are computed between factor values and future market returns across multiple forecast horizons, as an illustrative measure of short-horizon predictive behavior.
 
-3. **Sector exposure analysis**  
-   Asset-level weights are aggregated by sector to examine whether factor behavior may be driven by structural industry tilts.
+3. **Sector exposure inspection**  
+   Asset-level weights are aggregated by sector to examine whether observed factor behavior may be associated with underlying industry concentration.
 
----
-
-## Results
-
-### Factor Cumulative Returns
-
-The cumulative return curves illustrate substantial differences in long-term behavior across factors.
-
-- The market benchmark exhibits strong long-term growth with pronounced drawdowns.
-- SMB displays relatively flat cumulative performance over the sample period.
-- HML shows strong early performance followed by extended periods of underperformance, indicating regime dependence.
-
-These observations motivate further investigation into the stability of factor predictive power.
+These analyses are intended as diagnostic tools rather than formal statistical tests.
 
 ---
 
-### Information Coefficient and IC Decay
+## Observations
 
-Information Coefficients are computed for prediction horizons ranging from 1 to 12 months.
+Several qualitative patterns emerge from the exploratory results:
 
-The results show that:
-- The factor exhibits mildly positive IC values at very short horizons.
-- Predictive strength fluctuates substantially across horizons.
-- IC values tend to decay toward zero as the prediction horizon increases.
+- Cumulative return paths differ substantially across factors, with notable regime-dependent behavior.
+- IC values fluctuate across prediction horizons and tend to weaken at longer horizons.
+- Sector aggregation suggests that factor behavior may partially reflect industry exposure rather than isolated factor effects.
 
-Overall, the factor’s predictive ability appears short-lived and time-varying rather than persistent.
-
----
-
-### Sector Exposure
-
-Sector-level aggregation of asset weights reveals a pronounced concentration in specific industries.
-
-In the illustrative example:
-- Information Technology accounts for the majority of exposure.
-- Financials and Energy represent smaller but non-negligible components.
-
-This suggests that part of the observed factor behavior may be attributable to underlying sector tilts rather than pure factor effects.
+These observations are descriptive and sample-specific, and are not interpreted as evidence of stable or exploitable factor premia.
 
 ---
 
-## Discussion
+## Scope and Limitations
 
-Taken together, the results indicate that:
-
-- Long-term factor performance alone does not imply stable predictive power.
-- Information Coefficient analysis provides additional insight into the temporal stability of factor signals.
-- Sector exposure analysis highlights the importance of disentangling factor effects from structural industry biases.
-
-These findings emphasize the need for caution when interpreting factor performance based solely on historical returns.
+- The project is illustrative and exploratory in nature.
+- No transaction costs, portfolio construction, or performance optimization is considered.
+- Results depend on the chosen data sample and analysis setup.
+- No claims are made regarding out-of-sample predictability or investment applicability.
 
 ---
 
-## Notes and Limitations
+## Repository Structure
 
-- The analysis is descriptive and does not constitute a trading strategy.
-- Transaction costs, portfolio construction rules, and risk constraints are not considered.
-- Sector exposure analysis is based on a simplified illustrative universe and can be extended to broader asset sets.
+- `src/`  
+  Scripts for data loading, factor calculations, and exploratory analysis.
+
+- `results/`  
+  Saved figures and intermediate outputs generated by the analysis.
+
+- `README.md`  
+  Project overview and documentation.
+
+---
+
+## Notes
+
+This project is intended as a learning exercise focused on understanding commonly used factor diagnostics and their limitations, rather than as a research or trading study.
